@@ -1,6 +1,6 @@
 package com.company;
 
-// 2020/09/01/ 16:15 ~
+// 2020/09/01/ 16:15 ~16:50
 public class NumberOfPalindromes {
 
     // 2,8,10進数で共に回文数になる値を探すメソッド
