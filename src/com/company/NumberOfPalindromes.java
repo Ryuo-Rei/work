@@ -20,6 +20,7 @@ public class NumberOfPalindromes {
                 && octalNumber.equals(sb2.reverse().toString())
                 && decimalNumber.equals(sb3.reverse().toString())) {
                 System.out.println("2進数：" + binaryNumber + " 8進数：" + octalNumber + " 10進数：" + decimalNumber);
+                break;
             }
 
             number ++;
