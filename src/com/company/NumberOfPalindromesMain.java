@@ -2,7 +2,7 @@ package com.company;
 
 public class NumberOfPalindromesMain {
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         NumberOfPalindromes nOP = new NumberOfPalindromes();
         nOP.FindNOP();
     }
