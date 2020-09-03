@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-// 2020/09/03/ 15:50 ~
+// 2020/09/03/ 15:50 ~ 16:43
 public class Factorial {
 
     public void CalculateFactorial() {
@@ -34,7 +34,7 @@ public class Factorial {
 
             long factorial = 1;
 
-            for(int i = Integer.parseInt(input); 1 <= i; i--) {
+            for(int i = 2; i <= Integer.parseInt(input); i++) {
                 factorial *= i;
             }
             System.out.println(factorial);
