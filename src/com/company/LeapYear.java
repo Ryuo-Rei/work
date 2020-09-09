@@ -12,10 +12,10 @@ import static java.lang.System.exit;
 public class LeapYear {
 
     public void JudgeLeapYear() throws IOException {
-        boolean isNumber = true;
+        boolean hasError = true;
 
         while (true) {
-            if(isNumber == true) {
+            if(hasError == true) {
                 System.out.println("西暦を入力してください：");
             }
             else {
@@ -29,12 +29,12 @@ public class LeapYear {
                 exit(0);
             }
 
-            if (isNumber(input) == false || (Integer.parseInt(input) < 0 || 9999 < Integer.parseInt(input))) {
-                isNumber = false;
+            if (IsNumber(input) == false || (Integer.parseInt(input) < 0 || 9999 < Integer.parseInt(input))) {
+                hasError = false;
                 continue;
             }
 
-            isNumber = true;
+            hasError = true;
 
             int num = Integer.parseInt(input);
             if (num % 4 == 0 && num % 100 != 0 || num % 400 == 0) {
@@ -47,7 +47,7 @@ public class LeapYear {
     }
 
 
-    private boolean isNumber(String input) {
+    private boolean IsNumber(String input) {
         try {
             Integer.parseInt(input);
             return true;
