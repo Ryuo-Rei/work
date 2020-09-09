@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // 2020/09/04 16:25 ~
@@ -15,7 +16,7 @@ public class UnUsedNumber {
     final static String OUTPUTFILE_PATH = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputText.txt";
     final static String OUTPUTFILE_PATH2 = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputText2.txt";
 
-    public List<String> ReadFile(String path) {
+    public void ReadFile(String path) {
         Path file = Paths.get(path);
         List<String> fileContentList = null;
         try {
@@ -27,24 +28,17 @@ public class UnUsedNumber {
         for (int i = 0; i < fileContentList.size(); i++) {
             System.out.println(fileContentList.get(i));
         }
-        return fileContentList;
+
+        OutputFile(fileContentList);
     }
 
     public void OutputFile(List<String> fileContentList) {
         List<String> text = new ArrayList<String>();
-        List<Integer> countArray = new ArrayList<Integer>();
+        int[] countList = new int[10];
         StringBuilder sb = new StringBuilder();
-        char targetChar = '0';
-        int count = 0;
         for (int i = 0; i < fileContentList.size(); i++) {
-            sb = CheckNumber(fileContentList.get(i), sb);
-            countArray = CountNumber(fileContentList.get(i), count, targetChar, countArray);
-
-            if (sb == null || sb.toString().equals("")) {
-                text.add("none\r\n");
-            } else {
-                text.add(sb.toString() + "\r\n");
-            }
+            text.add(CheckNumber(fileContentList.get(i)));
+            countList = CountNumber(fileContentList.get(i), countList);
         }
 
         try {
@@ -58,28 +52,35 @@ public class UnUsedNumber {
             }
             FileWriter fw = new FileWriter(OUTPUTFILE_PATH, false);
             fw.write(String.valueOf(text));
+
             fw.close();
             FileWriter fw2 = new FileWriter(OUTPUTFILE_PATH2, false);
-            fw2.write(String.valueOf(countArray));
+            fw2.write(Arrays.toString(countList));
             fw2.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public StringBuilder CheckNumber(String text, StringBuilder sb) {
-        sb = new StringBuilder();
+    public String CheckNumber(String text) {
+        String str = "";
         for (int j = 0; j <= 9; j++) {
             int num = text.indexOf(Integer.toString(j));
             if (num == -1) {
-                sb.append(j);
+                str += "" + j;
             }
         }
-        return sb;
+        if (str == null || str.equals("")) {
+            return "none\r\n";
+        } else {
+            return str + "\r\n";
+        }
     }
 
 
-    public List<Integer> CountNumber(String text, int count , char targetChar, List<Integer> countArray) {
+    public int[] CountNumber(String text, int[] countList) {
+        char targetChar = '0';
+        int count = 0;
         for(int i = 0; i <= 9; i++) {
             targetChar = Integer.toString(i).charAt(0);
             count = 0;
@@ -88,9 +89,9 @@ public class UnUsedNumber {
                     count++;
                 }
             }
-            countArray.add(count);
+            countList[i] += count;
         }
-        return countArray;
+        return countList;
     }
 
 

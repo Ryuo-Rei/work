@@ -27,20 +27,21 @@ public class Scoring {
             List<String> numberArray = new ArrayList<String>();
             while(text != null){
                 numberArray.add(text);
+                int num = Integer.parseInt(numberArray.get(i));
 
-                if(0 <= Integer.parseInt(numberArray.get(i)) && Integer.parseInt(numberArray.get(i)) <= 20 ) {
+                if(0 <= num && num <= 20 ) {
                     repairCount++;
                 }
-                else if(21 <= Integer.parseInt(numberArray.get(i)) && Integer.parseInt(numberArray.get(i)) <= 45) {
+                else if(21 <= num && num <= 45) {
                     additionalAssignmentCountCount++;
                 }
-                else if(46 <= Integer.parseInt(numberArray.get(i)) && Integer.parseInt(numberArray.get(i)) <= 59) {
+                else if(46 <= num && num <= 59) {
                     yesCount++;
                 }
-                else if(60 <= Integer.parseInt(numberArray.get(i)) && Integer.parseInt(numberArray.get(i)) <= 79) {
+                else if(60 <= num && num <= 79) {
                     goodCount++;
                 }
-                else if(80 <= Integer.parseInt(numberArray.get(i)) && Integer.parseInt(numberArray.get(i)) <= 99) {
+                else if(80 <= num && num <= 99) {
                     superiorityCount++;
                 }
                 text = br.readLine();

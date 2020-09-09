@@ -29,28 +29,22 @@ public class MinutesToTimeAndDay {
         long hours = Long.parseLong(String.format("%.0f", Math.floor(minute / 60)));
         minute -= (hours * 60);
 
-
         System.out.println("入力値 " + minutes);
+        String outputResult = "出力：";
         if (days > 0) {
-            System.out.print("出力：" + days + "日");
-            if (hours > 0 && minute > 0) {
-                System.out.println(" " + hours + "時間" + minute + "分");
-            } else if (hours > 0 && minute == 0) {
-                System.out.println(" " + hours + "時間");
-            } else if (hours == 0 && minute > 0) {
-                System.out.println(" " + minute + "分");
-            }
-        } else {
-            if (hours > 0 && minute > 0) {
-                System.out.println("出力：" + hours + "時間" + minute + "分");
-            } else if (hours > 0 && minute == 0) {
-                System.out.println("出力：" + hours + "時間");
-            } else if (hours == 0 && minute > 0) {
-                System.out.println("出力：" + minute + "分");
-            } else {
-                System.out.println("出力：" + minute + "分");
-            }
+            outputResult += days + "日";
         }
+
+        if (hours > 0){
+            outputResult += hours + "時間";
+        }
+
+        if(((days > 0 || hours > 0) && minute > 0)
+        || (days == 0 && hours == 0)) {
+            outputResult += minute + "分";
+        }
+
+        System.out.println(outputResult);
     }
 
 }

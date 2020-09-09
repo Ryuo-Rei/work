@@ -11,6 +11,31 @@ public class QueueExchange {
             {"7", "8", "9", "C"},
     };
 
+    public void Print() {
+        System.out.println("変換元配列：");
+        ShowTwoDimentionalArray(queue);
+        System.out.println("");
+
+        System.out.println("返還後配列：");
+        String[][] exchangeQueue = QueueExchange(queue);
+        ShowTwoDimentionalArray(exchangeQueue);
+        System.out.println("");
+
+        System.out.println("行加算結果：");
+        int[] lineAdditionArray = LineAddition(exchangeQueue);
+        ShowOneDimensionalArray(lineAdditionArray);
+        System.out.println("");
+
+        System.out.println("列加算結果：");
+        int[] rowAdditionArray = RowAddition(exchangeQueue);
+        ShowOneDimensionalArray(rowAdditionArray);
+        System.out.println("");
+
+        System.out.println("全要素加算結果：");
+        int num = AllElementAddition(exchangeQueue);
+        ShowSum(num);
+    }
+
     public void ShowTwoDimentionalArray(String[][] queue) {
         for(int i = 0; i < queue.length; i++) {
             for(int j = 0; j < queue[i].length; j++) {
@@ -45,9 +70,6 @@ public class QueueExchange {
                 if(p.matcher(queue[i][j]).find()) {
                     num += Integer.parseInt(queue[i][j]);
                 }
-                else {
-                    num += 0;
-                }
             }
             lineAdditionArray[i] = num;
         }
@@ -72,9 +94,6 @@ public class QueueExchange {
                 if(p.matcher(queue[j][i]).find()) {
                     num += Integer.parseInt(queue[j][i]);
                 }
-                else {
-                    num += 0;
-                }
             }
             rowAdditionArray[i] = num;
         }
@@ -89,9 +108,6 @@ public class QueueExchange {
             for(int j = 0; j < queue[0].length; j++) {
                 if(p.matcher(queue[i][j]).find()) {
                     num += Integer.parseInt(queue[i][j]);
-                }
-                else {
-                    num += 0;
                 }
             }
         }
