@@ -13,10 +13,18 @@ import java.util.List;
 public class UnUsedNumber {
 
     final static String FILE_PATH = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\test.txt";
-    final static String OUTPUTFILE_PATH = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputText.txt";
-    final static String OUTPUTFILE_PATH2 = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputText2.txt";
+    final static String OUTPUTFILE_PATH = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputunUsedNumberList.txt";
+    final static String OUTPUTFILE_PATH2 = "C:\\Users\\ryuorei\\Desktop\\Git\\work\\outputunUsedNumberList2.txt";
 
-    public void ReadFile(String path) {
+    List<String> unUsedNumberList = new ArrayList<String>();
+    int[] countList = new int[10];
+
+    public void Execute() {
+        List<String> fileContentList = ReadFile(FILE_PATH);
+
+    }
+
+    private List<String> ReadFile(String path) {
         Path file = Paths.get(path);
         List<String> fileContentList = null;
         try {
@@ -29,17 +37,17 @@ public class UnUsedNumber {
             System.out.println(fileContentList.get(i));
         }
 
-        OutputFile(fileContentList);
+        return fileContentList;
     }
 
-    public void OutputFile(List<String> fileContentList) {
-        List<String> text = new ArrayList<String>();
-        int[] countList = new int[10];
-        StringBuilder sb = new StringBuilder();
+    private void ParseData(List<String> fileContentList) {
         for (int i = 0; i < fileContentList.size(); i++) {
-            text.add(CheckNumber(fileContentList.get(i)));
+            unUsedNumberList.add(CheckNumber(fileContentList.get(i)));
             countList = CountNumber(fileContentList.get(i), countList);
         }
+    }
+
+    private void OutputFile() {
 
         try {
             File file = new File(OUTPUTFILE_PATH);
@@ -51,7 +59,7 @@ public class UnUsedNumber {
                 file2.createNewFile();
             }
             FileWriter fw = new FileWriter(OUTPUTFILE_PATH, false);
-            fw.write(String.valueOf(text));
+            fw.write(String.valueOf(unUsedNumberList));
 
             fw.close();
             FileWriter fw2 = new FileWriter(OUTPUTFILE_PATH2, false);
@@ -62,12 +70,12 @@ public class UnUsedNumber {
         }
     }
 
-    public String CheckNumber(String text) {
+    private String CheckNumber(String unUsedNumberList) {
         String str = "";
         for (int j = 0; j <= 9; j++) {
-            int num = text.indexOf(Integer.toString(j));
+            int num = unUsedNumberList.indexOf(Integer.toString(j));
             if (num == -1) {
-                str += "" + j;
+                str += Integer.toString(j);
             }
         }
         if (str == null || str.equals("")) {
@@ -78,14 +86,14 @@ public class UnUsedNumber {
     }
 
 
-    public int[] CountNumber(String text, int[] countList) {
+    private int[] CountNumber(String unUsedNumberList, int[] countList) {
         char targetChar = '0';
         int count = 0;
         for(int i = 0; i <= 9; i++) {
             targetChar = Integer.toString(i).charAt(0);
             count = 0;
-            for(int j = 0; j < text.length(); j++) {
-                if(text.charAt(j) == targetChar) {
+            for(int j = 0; j < unUsedNumberList.length(); j++) {
+                if(unUsedNumberList.charAt(j) == targetChar) {
                     count++;
                 }
             }

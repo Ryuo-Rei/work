@@ -36,7 +36,7 @@ public class QueueExchange {
         ShowSum(num);
     }
 
-    public void ShowTwoDimentionalArray(String[][] queue) {
+    private void ShowTwoDimentionalArray(String[][] queue) {
         for(int i = 0; i < queue.length; i++) {
             for(int j = 0; j < queue[i].length; j++) {
                 if(j != 0) {
@@ -48,7 +48,7 @@ public class QueueExchange {
         }
     }
 
-    public String[][] QueueExchange(String[][] queue) {
+    private String[][] QueueExchange(String[][] queue) {
         String[][] exchangedQueue = new String[queue[0].length][queue.length];
         for(int i = 0; i < queue.length; i++) {
             for(int j = 0; j < queue[0].length; j++) {
@@ -59,7 +59,7 @@ public class QueueExchange {
         return exchangedQueue;
     }
 
-    public int[] LineAddition(String[][] queue) {
+    private int[] LineAddition(String[][] queue) {
         int[] lineAdditionArray = new int[queue.length];
         int num = 0;
         String regex = "^-?[0-9]*$";
@@ -77,13 +77,13 @@ public class QueueExchange {
         return lineAdditionArray;
     }
 
-    public void ShowOneDimensionalArray(int[] lineAdditionArray) {
+    private void ShowOneDimensionalArray(int[] lineAdditionArray) {
         for(int i = 0; i < queue.length; i++) {
             System.out.println(lineAdditionArray[i]);
         }
     }
 
-    public int[] RowAddition(String[][] queue) {
+    private int[] RowAddition(String[][] queue) {
         int [] rowAdditionArray = new int[queue.length];
         int num = 0;
         String regex = "^-?[0-9]*$";
@@ -100,7 +100,7 @@ public class QueueExchange {
         return rowAdditionArray;
     }
 
-    public int AllElementAddition(String[][] queue) {
+    private int AllElementAddition(String[][] queue) {
         int num = 0;
         String regex = "^-?[0-9]*$";
         Pattern p = Pattern.compile(regex);
@@ -114,7 +114,7 @@ public class QueueExchange {
         return num;
     }
 
-    public void ShowSum(int num) {
+    private void ShowSum(int num) {
         System.out.println(num);
     }
 }
