@@ -49,7 +49,7 @@ public class PrimeNumber {
                 }
 
             }
-            System.out.println("" + input + "以上で" + input2 +"以下の素数は、" + numberArray.toString());
+            System.out.println("" + input + "以上で" + input2 +"以下の素数は、" + numberArray.toString() + "です。");
             break;
         }
     }
