@@ -21,7 +21,8 @@ public class UnUsedNumber {
 
     public void Execute() {
         List<String> fileContentList = ReadFile(FILE_PATH);
-
+        ParseData(fileContentList);
+        OutputFile();
     }
 
     private List<String> ReadFile(String path) {

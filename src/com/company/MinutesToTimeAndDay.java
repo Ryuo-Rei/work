@@ -39,8 +39,7 @@ public class MinutesToTimeAndDay {
             outputResult += hours + "時間";
         }
 
-        if(minute > 0
-        || (days == 0 && hours == 0)) {
+        if(minute > 0 || minute == 0) {
             outputResult += minute + "分";
         }
 
