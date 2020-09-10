@@ -62,4 +62,6 @@ public class PrimeNumber {
             input2 = num;
         }
     }
+
+    //public
 }
